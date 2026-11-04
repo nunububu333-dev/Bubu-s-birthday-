@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İyi ki Doğdun Bubu ♡</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700&family=Outfit:wght@400;500;600;700;800&family=Pacifico&family=Sacramento&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        softPink: '#fff0f3',
+                        roseGold: '#ffb3c1',
+                        dustyRose: '#ff758f',
+                        deepRose: '#c9184a',
+                        cardBg: '#ffffff',
+                    },
+                    fontFamily: {
+                        handwriting: ['Sacramento', 'cursive'],
+                        title: ['Pacifico', 'cursive'],
+                        sans: ['Outfit', 'sans-serif'],
+                        arabic: ['Cairo', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #fff0f3 0%, #ffccd5 50%, #ffb3c1 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Background Floating Hearts Animation */
+        .bg-particle {
+            position: fixed;
+            bottom: -50px;
+            animation: floatUp 12s infinite linear;
+            opacity: 0.6;
+            pointer-events: none;
+            z-index: 0;
+            user-select: none;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-115vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Custom Interactive Envelope */
+        .envelope-card {
+            background: #ffffff;
+            box-shadow: 0 15px 35px rgba(201, 24, 74, 0.12);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Candle Flame Animation */
+        .flame {
+            animation: flicker 0.8s infinite alternate ease-in-out;
+            transform-origin: center bottom;
+        }
+
+        @keyframes flicker {
+            0% { transform: scale(1) rotate(-3deg); filter: drop-shadow(0 0 6px #ffb703); }
+            50% { transform: scale(1.15) rotate(3deg); filter: drop-shadow(0 0 12px #ffb703); }
+            100% { transform: scale(0.95) rotate(-1deg); filter: drop-shadow(0 0 4px #ff8500); }
+        }
+
+        .extinguished {
+            display: none !important;
+        }
+
+        /* Burst Floating Hearts Emoji */
+        .burst-emoji {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            font-size: 2rem;
+            animation: burstAnimation 2.2s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+        }
+
+        @keyframes burstAnimation {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(0.4) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--tx), var(--ty)) scale(1.5) rotate(var(--rot));
+            }
+        }
+
+        /* Spinning Wheel Pointer */
+        .wheel-pointer {
+            width: 0;
+            height: 0;
+            border-left: 16px solid transparent;
+            border-right: 16px solid transparent;
+            border-top: 28px solid #c9184a;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+        }
+
+        /* Smooth Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ff758f;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="relative text-gray-800 pb-20">
+
+    <!-- Floating Background Particles -->
+    <div id="particleContainer" class="fixed inset-0 pointer-events-none z-0"></div>
+
+    <div class="max-w-2xl mx-auto px-4 py-8 relative z-10 flex flex-col items-center gap-10">
+
+        <!-- 1. HEADER SECTION -->
+        <header class="text-center mt-2 flex flex-col items-center w-full">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-white/80 backdrop-blur-md border border-pink-200 rounded-full text-deepRose text-xs sm:text-sm font-semibold mb-4 shadow-sm animate-bounce">
+                <span>✨ 23. Yaşın Kutlu Olsun ✨</span>
+            </div>
+            
+            <h1 class="font-title text-4xl sm:text-6xl text-deepRose drop-shadow-sm leading-tight tracking-wide">
+                İyi ki doğdun bubu♡
+            </h1>
+            
+            <p class="font-arabic text-2xl sm:text-3xl text-dustyRose font-bold mt-3 dir-rtl tracking-wide">
+                من نونو إلى بوبو
+            </p>
+            
+            <div class="w-28 h-1 bg-gradient-to-r from-transparent via-deepRose to-transparent rounded-full mt-4 opacity-40"></div>
+        </header>
+
+        <!-- 2. INTERACTIVE ENVELOPE SECTION -->
+        <section class="w-full flex flex-col items-center">
+            <div class="text-center mb-3">
+                <span class="text-xs font-extrabold tracking-widest text-deepRose uppercase">Özel Mektubun</span>
+                <h2 class="text-xl sm:text-2xl font-bold text-gray-800">Sana Bir Mesaj Var 💌</h2>
+            </div>
+
+            <!-- Envelope Container -->
+            <div class="w-full max-w-md">
+                <button id="envelopeBtn" onclick="toggleEnvelopeCard()" class="w-full group focus:outline-none">
+                    <div class="bg-gradient-to-r from-rose-400 to-deepRose hover:from-rose-500 hover:to-deepRose text-white font-bold py-3.5 px-6 rounded-2xl shadow-lg flex items-center justify-center gap-3 transition-all transform group-hover:scale-[1.02] active:scale-95 border-2 border-white/40">
+                        <i class="fa-solid fa-envelope-open-text text-xl"></i>
+                        <span class="text-lg">açmak için aç</span>
+                        <i id="envelopeChevron" class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
+                    </div>
+                </button>
+
+                <!-- Envelope Hidden Letter Content Card -->
+                <div id="letterCard" class="hidden mt-4 envelope-card rounded-3xl p-6 sm:p-8 border-2 border-pink-100 text-left relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-rose-100 rounded-bl-full -z-0 opacity-50"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between border-b border-pink-100 pb-3 mb-4">
+                            <span class="font-handwriting text-3xl font-bold text-deepRose">Sevgili Ömer'im,</span>
+                            <span class="text-xs text-dustyRose font-semibold bg-pink-50 px-3 py-1 rounded-full border border-pink-100">❤️ Bubu'ya Not</span>
+                        </div>
+
+                        <p class="text-base sm:text-lg leading-relaxed text-gray-700 font-medium whitespace-pre-line">
+İyi ki doğdun sevgilim, iyi ki hayatımdasın ömer🥹🧚‍♀️
+
+Aralarımıza mesafeler girse de kalbinin her atışını yanımda hissediyorum❤️. Sen benim en güzel şansımsın, iyi ki varsın bebiş.
+
+Birlikte kutlayacağımız, hiç ayrılmayacağımız nice mutlu yıllarımız olsun, seni çok seviyorum ya bubu♡
+                        </p>
+
+                        <div class="mt-6 pt-3 border-t border-pink-100 text-right">
+                            <span class="font-handwriting text-2xl text-deepRose font-bold">~ Seni Çok Seven Nunu'n 🧚‍♀️</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. BIRTHDAY CAKE & WISH SECTION -->
+        <section class="w-full bg-white/80 backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-xl border border-white/60 flex flex-col items-center text-center">
+            <span class="text-xs font-extrabold tracking-widest text-deepRose uppercase mb-1">Dilek Zamanı</span>
+            <h2 class="text-2xl font-bold text-gray-800">23. Yaş Mumların 🎂</h2>
+
+            <!-- SVG Cake with "23" Candles -->
+            <div class="relative my-4 flex justify-center items-center">
+                <svg width="260" height="230" viewBox="0 0 260 230" class="drop-shadow-md">
+                    <!-- Plate -->
+                    <ellipse cx="130" cy="205" rx="105" ry="16" fill="#e2e8f0" />
+                    <ellipse cx="130" cy="202" rx="95" ry="14" fill="#ffffff" />
+                    
+                    <!-- Bottom Layer -->
+                    <path d="M 45 150 Q 45 190 130 190 Q 215 190 215 150 L 215 110 L 45 110 Z" fill="#f4a261" />
+                    <path d="M 45 150 Q 45 190 130 190 Q 215 190 215 150 L 215 155 Q 215 195 130 195 Q 45 195 45 155 Z" fill="#e76f51" opacity="0.5" />
+                    
+                    <!-- Cream Layer -->
+                    <path d="M 45 125 C 65 135, 85 115, 105 125 C 125 135, 145 115, 165 125 C 185 135, 205 115, 215 125 L 215 110 L 45 110 Z" fill="#ffffff" />
+
+                    <!-- Top Layer -->
+                    <path d="M 55 110 Q 55 140 130 140 Q 205 140 205 110 L 205 75 L 55 75 Z" fill="#ffb3c1" />
+                    
+                    <!-- Frosting Top -->
+                    <ellipse cx="130" cy="75" rx="75" ry="18" fill="#ffccd5" />
+                    <path d="M 55 75 C 65 90, 75 80, 85 90 C 95 100, 105 80, 115 90 C 125 95, 135 80, 145 95 C 155 100, 165 80, 175 90 C 185 100, 195 80, 205 75 Q 205 95 130 95 Q 55 95 55 75 Z" fill="#ffccd5" />
+
+                    <!-- Decorative Hearts -->
+                    <text x="90" y="115" font-size="12">❤️</text>
+                    <text x="125" y="122" font-size="12">💖</text>
+                    <text x="160" y="115" font-size="12">❤️</text>
+
+                    <!-- Candle Number 2 -->
+                    <g transform="translate(88, 22)">
+                        <rect x="18" y="28" width="4" height="12" fill="#fff" rx="2" />
+                        <text x="20" y="32" font-family="'Outfit', sans-serif" font-weight="900" font-size="30" fill="#c9184a" text-anchor="middle" stroke="#ffffff" stroke-width="1.5">2</text>
+                        <line x1="20" y1="8" x2="20" y2="2" stroke="#333" stroke-width="2" />
+                        <g id="flame1" class="flame">
+                            <ellipse cx="20" cy="-3" rx="5" ry="8" fill="#ffb703" />
+                            <ellipse cx="20" cy="-1" rx="3" ry="5" fill="#fb8500" />
+                            <ellipse cx="20" cy="1" rx="1.5" ry="2" fill="#fff" />
+                        </g>
+                    </g>
+
+                    <!-- Candle Number 3 -->
+                    <g transform="translate(132, 22)">
+                        <rect x="18" y="28" width="4" height="12" fill="#fff" rx="2" />
+                        <text x="20" y="32" font-family="'Outfit', sans-serif" font-weight="900" font-size="30" fill="#c9184a" text-anchor="middle" stroke="#ffffff" stroke-width="1.5">3</text>
+                        <line x1="20" y1="8" x2="20" y2="2" stroke="#333" stroke-width="2" />
+                        <g id="flame2" class="flame">
+                            <ellipse cx="20" cy="-3" rx="5" ry="8" fill="#ffb703" />
+                            <ellipse cx="20" cy="-1" rx="3" ry="5" fill="#fb8500" />
+                            <ellipse cx="20" cy="1" rx="1.5" ry="2" fill="#fff" />
+                        </g>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Wish Button -->
+            <button id="wishBtn" onclick="makeWish(event)" class="mt-2 px-8 py-3.5 bg-gradient-to-r from-pink-500 via-rose-500 to-deepRose hover:from-pink-600 hover:to-deepRose text-white font-bold rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:scale-95 transition-all text-base sm:text-lg flex items-center gap-2.5">
+                <i class="fa-solid fa-wand-magic-sparkles text-yellow-300"></i>
+                <span>bir dilek tut 🧚‍♀️</span>
+            </button>
+            
+            <p id="wishMsg" class="text-xs sm:text-sm text-deepRose font-semibold mt-3 opacity-0 transition-opacity duration-300">
+                ✨ Dileğin tutuldu ve mumların üflendi! Tüm dileklerin kabul olsun sevgilim 💕
+            </p>
+        </section>
+
+        <!-- 4. GIFT SECTION -->
+        <section class="w-full bg-white/80 backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-xl border border-white/60 text-center">
+            <div class="inline-flex items-center justify-center p-3 bg-pink-100 text-deepRose rounded-2xl mb-2">
+                <i class="fa-solid fa-gift text-2xl"></i>
+            </div>
+            
+            <h2 class="text-2xl font-bold text-gray-800 mb-1">senin için hediye🧚‍♀️</h2>
+            <p class="text-xs sm:text-sm text-gray-500 mb-5">Sana özel seçtiğim bu sürpriz hediyeyi dinlemek için tıkla!</p>
+
+            <div class="bg-pink-50/80 border border-pink-200 rounded-2xl p-4 max-w-lg mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3 overflow-hidden w-full sm:w-auto text-left">
+                    <div class="bg-red-500 text-white p-3 rounded-xl shrink-0">
+                        <i class="fa-brands fa-youtube text-2xl"></i>
+                    </div>
+                    <div class="truncate">
+                        <p class="text-xs text-gray-500 font-bold uppercase">YouTube Özel Hediyen</p>
+                        <a href="https://youtu.be/I_zE7qY47Jw?si=-IjrJNsOC7y9XIbY" target="_blank" class="text-xs sm:text-sm font-bold text-deepRose hover:underline truncate block">
+                            https://youtu.be/I_zE7qY47Jw
+                        </a>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-2 w-full sm:w-auto shrink-0">
+                    <button onclick="copyYoutubeLink()" class="flex-1 sm:flex-none px-4 py-2.5 bg-white border border-pink-300 hover:bg-pink-100 text-deepRose font-bold text-xs rounded-xl transition flex items-center justify-center gap-1.5 shadow-sm">
+                        <i id="copyIcon" class="fa-regular fa-copy"></i>
+                        <span id="copyBtnText">Kopyala</span>
+                    </button>
+                    <a href="https://youtu.be/I_zE7qY47Jw?si=-IjrJNsOC7y9XIbY" target="_blank" class="flex-1 sm:flex-none px-4 py-2.5 bg-red-500 hover:bg-red-600 text-white font-bold text-xs rounded-xl transition flex items-center justify-center gap-1.5 shadow-sm">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        <span>Aç</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. SPINNING WHEEL SECTION (ÇARKIFELEK) -->
+        <section class="w-full bg-white/80 backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-xl border border-white/60 flex flex-col items-center">
+            <div class="text-center mb-3">
+                <span class="text-xs font-extrabold tracking-widest text-deepRose uppercase">Eğlenceli Oyun</span>
+                <h2 class="text-2xl font-bold text-gray-800">çarkıfeleği çevir 🎡</h2>
+                <p class="text-xs text-gray-500 mt-1">Bakalım bugün şansına hangi hediyen çıkacak bubu?</p>
+            </div>
+
+            <div class="relative flex flex-col items-center my-4">
+                <!-- Top Pointer -->
+                <div class="wheel-pointer z-20 -mb-3"></div>
+
+                <!-- Canvas Wheel Container -->
+                <div class="relative p-2 bg-white rounded-full shadow-lg border-4 border-pink-200">
+                    <canvas id="wheelCanvas" width="300" height="300" class="max-w-full h-auto rounded-full"></canvas>
+                </div>
+
+                <!-- Spin Button -->
+                <button id="spinBtn" onclick="spinWheel()" class="mt-6 px-8 py-3 bg-gradient-to-r from-rose-500 to-deepRose hover:from-rose-600 hover:to-deepRose text-white font-bold rounded-full shadow-lg transform hover:scale-105 active:scale-95 transition text-base flex items-center gap-2">
+                    <i class="fa-solid fa-rotate"></i>
+                    <span>Çevir 🎲</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- 6. RELATIONSHIP DAYS COUNTER SECTION -->
+        <section class="w-full bg-gradient-to-br from-pink-500 via-rose-500 to-deepRose text-white rounded-3xl p-6 sm:p-8 shadow-xl text-center relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+            <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+
+            <span class="inline-block px-3.5 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-semibold mb-3 border border-white/30">
+                🗓️ Tanışma Tarihimiz: 04 / 04 / 2024
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Birlikte Geçen Süremiz 💕</h2>
+
+            <!-- Counter Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-lg mx-auto my-3">
+                <div class="bg-white/15 backdrop-blur-md rounded-2xl p-3.5 border border-white/25">
+                    <span id="cDays" class="block text-2xl sm:text-4xl font-extrabold tracking-tight">0</span>
+                    <span class="text-xs text-pink-100 font-medium uppercase tracking-wider">Gün</span>
+                </div>
+                <div class="bg-white/15 backdrop-blur-md rounded-2xl p-3.5 border border-white/25">
+                    <span id="cHours" class="block text-2xl sm:text-4xl font-extrabold tracking-tight">0</span>
+                    <span class="text-xs text-pink-100 font-medium uppercase tracking-wider">Saat</span>
+                </div>
+                <div class="bg-white/15 backdrop-blur-md rounded-2xl p-3.5 border border-white/25">
+                    <span id="cMinutes" class="block text-2xl sm:text-4xl font-extrabold tracking-tight">0</span>
+                    <span class="text-xs text-pink-100 font-medium uppercase tracking-wider">Dakika</span>
+                </div>
+                <div class="bg-white/15 backdrop-blur-md rounded-2xl p-3.5 border border-white/25">
+                    <span id="cSeconds" class="block text-2xl sm:text-4xl font-extrabold tracking-tight">0</span>
+                    <span class="text-xs text-pink-100 font-medium uppercase tracking-wider">Saniye</span>
+                </div>
+            </div>
+
+            <p class="font-handwriting text-2xl sm:text-3xl text-pink-100 mt-6 tracking-wide drop-shadow-sm">
+                "seninle geçen her anıma şükrediyorum"
+            </p>
+        </section>
+
+        <!-- 7. FOOTER MESSAGE SECTION -->
+        <footer class="text-center mt-2 mb-4 w-full">
+            <div class="inline-flex items-center justify-center gap-2 text-base sm:text-xl font-bold text-deepRose bg-white/90 backdrop-blur-md px-6 py-3.5 rounded-full shadow-md border border-pink-200">
+                <span>seni son nefesime kadar seviyorum</span>
+                <span class="animate-bounce">❤️</span>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- PRIZE WINNER MODAL -->
+    <div id="prizeModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-sm w-full text-center shadow-2xl transform scale-90 transition-all duration-300 border border-pink-100">
+            <div class="w-16 h-16 bg-pink-100 text-deepRose rounded-full flex items-center justify-center text-3xl mx-auto mb-3 shadow-inner">
+                🎉
+            </div>
+            <span class="text-xs uppercase tracking-wider font-extrabold text-dustyRose">Tebrikler Bubu!</span>
+            <h3 class="text-xl font-bold text-gray-800 my-1">Çark Hediyen:</h3>
+            
+            <div id="prizeResultText" class="text-lg font-extrabold text-deepRose bg-pink-50 p-4 rounded-2xl border border-pink-200 my-3">
+                <!-- Won Prize Item -->
+            </div>
+
+            <button onclick="closePrizeModal()" class="mt-4 w-full py-3 bg-gradient-to-r from-rose-500 to-deepRose text-white font-bold rounded-xl shadow-md hover:opacity-95 transition">
+                Çok Sevindim! 💕
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT CODE -->
+    <script>
+        /* 1. BACKGROUND FLOATING PARTICLES */
+        function initFloatingParticles() {
+            const container = document.getElementById('particleContainer');
+            const items = ['🌸', '🩷', '💕', '✨', '💖', '🧚‍♀️'];
+            for (let i = 0; i < 16; i++) {
+                const el = document.createElement('div');
+                el.className = 'bg-particle';
+                el.innerText = items[Math.floor(Math.random() * items.length)];
+                el.style.left = `${Math.random() * 100}%`;
+                el.style.animationDuration = `${7 + Math.random() * 9}s`;
+                el.style.animationDelay = `${Math.random() * 6}s`;
+                el.style.fontSize = `${1.2 + Math.random() * 1.3}rem`;
+                container.appendChild(el);
+            }
+        }
+
+        /* 2. ENVELOPE CARD TOGGLE */
+        let isEnvelopeOpen = false;
+        function toggleEnvelopeCard() {
+            const letterCard = document.getElementById('letterCard');
+            const chevron = document.getElementById('envelopeChevron');
+            isEnvelopeOpen = !isEnvelopeOpen;
+
+            if (isEnvelopeOpen) {
+                letterCard.classList.remove('hidden');
+                chevron.style.transform = 'rotate(180deg)';
+            } else {
+                letterCard.classList.add('hidden');
+                chevron.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        /* 3. WISH & CANDLE BLOW WITH BURST EMOJIS */
+        let candlesBlown = false;
+        function makeWish(event) {
+            // Extinguish candle flames
+            if (!candlesBlown) {
+                document.getElementById('flame1').classList.add('extinguished');
+                document.getElementById('flame2').classList.add('extinguished');
+                candlesBlown = true;
+            }
+
+            // Show text
+            document.getElementById('wishMsg').style.opacity = '1';
+
+            // Burst specified emojis: 💕💞🌸🩷🌸💕💞🧚‍♀️
+            const burstEmojis = ['💕', '💞', '🌸', '🩷', '🌸', '💕', '💞', '🧚‍♀️'];
+            const btn = document.getElementById('wishBtn');
+            const rect = btn.getBoundingClientRect();
+            const startX = rect.left + rect.width / 2;
+            const startY = rect.top + rect.height / 2;
+
+            for (let i = 0; i < 32; i++) {
+                const emoji = burstEmojis[i % burstEmojis.length];
+                const el = document.createElement('div');
+                el.className = 'burst-emoji';
+                el.innerText = emoji;
+                el.style.left = `${startX}px`;
+                el.style.top = `${startY}px`;
+
+                const angle = Math.random() * Math.PI * 2;
+                const distance = 100 + Math.random() * 180;
+                const tx = Math.cos(angle) * distance;
+                const ty = Math.sin(angle) * distance - 60;
+                const rot = (Math.random() - 0.5) * 360;
+
+                el.style.setProperty('--tx', `${tx}px`);
+                el.style.setProperty('--ty', `${ty}px`);
+                el.style.setProperty('--rot', `${rot}deg`);
+
+                document.body.appendChild(el);
+
+                setTimeout(() => { el.remove(); }, 2200);
+            }
+        }
+
+        /* 4. COPY YOUTUBE LINK */
+        function copyYoutubeLink() {
+            const ytLink = "https://youtu.be/I_zE7qY47Jw?si=-IjrJNsOC7y9XIbY";
+            
+            const textarea = document.createElement('textarea');
+            textarea.value = ytLink;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            const btnText = document.getElementById('copyBtnText');
+            const icon = document.getElementById('copyIcon');
+            
+            btnText.innerText = "Kopyalandı! ✨";
+            icon.className = "fa-solid fa-check text-green-500";
+
+            setTimeout(() => {
+                btnText.innerText = "Kopyala";
+                icon.className = "fa-regular fa-copy";
+            }, 2500);
+        }
+
+        /* 5. CANVAS SPINNING WHEEL (ÇARKIFELEK) */
+        const canvas = document.getElementById('wheelCanvas');
+        const ctx = canvas.getContext('2d');
+        const prizes = [
+            "1. Sana öpücükler 😚",
+            "2. Sana bir şarkı",
+            "3. Ses kayıdı",
+            "4. Film gecesi (ileride)",
+            "5. Bir fotoğraf🧚‍♀️"
+        ];
+        
+        const wheelColors = [
+            "#ffb3c1",
+            "#ff758f",
+            "#e76f51",
+            "#f4a261",
+            "#c9184a"
+        ];
+
+        let currentAngle = 0;
+        const sliceAngle = (2 * Math.PI) / prizes.length;
+        let isSpinning = false;
+
+        function drawWheel() {
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const outerRadius = 140;
+            const textRadius = 95;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (let i = 0; i < prizes.length; i++) {
+                const angle = currentAngle + i * sliceAngle;
+
+                // Slice
+                ctx.fillStyle = wheelColors[i % wheelColors.length];
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.arc(centerX, centerY, outerRadius, angle, angle + sliceAngle);
+                ctx.closePath();
+                ctx.fill();
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = "#ffffff";
+                ctx.stroke();
+
+                // Text
+                ctx.save();
+                ctx.fillStyle = "#ffffff";
+                ctx.font = "bold 12px Outfit, sans-serif";
+                ctx.translate(
+                    centerX + Math.cos(angle + sliceAngle / 2) * textRadius,
+                    centerY + Math.sin(angle + sliceAngle / 2) * textRadius
+                );
+                ctx.rotate(angle + sliceAngle / 2 + Math.PI / 2);
+                const prizeText = prizes[i];
+                ctx.fillText(prizeText, -ctx.measureText(prizeText).width / 2, 0);
+                ctx.restore();
+            }
+
+            // Center Pin
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 28, 0, 2 * Math.PI);
+            ctx.fillStyle = "#ffffff";
+            ctx.fill();
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = "#ff758f";
+            ctx.stroke();
+
+            ctx.fillStyle = "#c9184a";
+            ctx.font = "16px sans-serif";
+            ctx.fillText("❤️", centerX - 9, centerY + 6);
+        }
+
+        function spinWheel() {
+            if (isSpinning) return;
+            isSpinning = true;
+
+            const spinDuration = 4000;
+            const startTimestamp = performance.now();
+            const randomRotations = 5 + Math.random() * 4;
+            const targetTotalRotation = randomRotations * 2 * Math.PI;
+            const initialAngle = currentAngle;
+
+            function animateWheel(now) {
+                const elapsed = now - startTimestamp;
+                const progress = Math.min(elapsed / spinDuration, 1);
+                
+                // Ease out cubic
+                const easeOut = 1 - Math.pow(1 - progress, 3);
+                currentAngle = initialAngle + targetTotalRotation * easeOut;
+
+                drawWheel();
+
+                if (progress < 1) {
+                    requestAnimationFrame(animateWheel);
+                } else {
+                    isSpinning = false;
+                    determineWinner();
+                }
+            }
+
+            requestAnimationFrame(animateWheel);
+        }
+
+        function determineWinner() {
+            const normalizedAngle = (currentAngle % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+            // Pointer is at top (-PI/2 or 3PI/2)
+            const pointerAngle = (3 * Math.PI / 2 - normalizedAngle + 2 * Math.PI) % (2 * Math.PI);
+            const winningIndex = Math.floor(pointerAngle / sliceAngle) % prizes.length;
+            
+            showPrizeModal(prizes[winningIndex]);
+        }
+
+        function showPrizeModal(prizeText) {
+            const modal = document.getElementById('prizeModal');
+            document.getElementById('prizeResultText').innerText = prizeText;
+
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.children[0].classList.remove('scale-90');
+            modal.children[0].classList.add('scale-100');
+        }
+
+        function closePrizeModal() {
+            const modal = document.getElementById('prizeModal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.children[0].classList.remove('scale-100');
+            modal.children[0].classList.add('scale-90');
+        }
+
+        /* 6. LIVE DAYS COUNTER (Start Date: 04/04/2024) */
+        const relationshipStartDate = new Date(2024, 3, 4, 0, 0, 0); // 4 April 2024
+
+        function updateLiveCounter() {
+            const now = new Date();
+            const diffMs = now - relationshipStartDate;
+
+            if (diffMs > 0) {
+                const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diffMs / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((diffMs / (1000 * 60)) % 60);
+                const seconds = Math.floor((diffMs / 1000) % 60);
+
+                document.getElementById('cDays').innerText = days;
+                document.getElementById('cHours').innerText = hours < 10 ? '0' + hours : hours;
+                document.getElementById('cMinutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+                document.getElementById('cSeconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+            }
+        }
+
+        /* INITIALIZATION */
+        window.onload = function() {
+            initFloatingParticles();
+            drawWheel();
+            updateLiveCounter();
+            setInterval(updateLiveCounter, 1000);
+        };
+    </script>
+</body>
+</html>
+```
